@@ -21,6 +21,7 @@ const initialState: VinylState = {
 export const VinylsStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
+  // Computed
   withComputed((state) => ({
     getLatestVinyl: computed(() => {
       return state.vinyls().sort((a, b) => a.year - b.year)[0];
@@ -28,6 +29,7 @@ export const VinylsStore = signalStore(
     isLoading: computed(() => state.loadState.status() === 'loading'),
     isLoaded: computed(() => state.loadState.status() === 'loaded'),
   })),
+  // Methods
   withMethods((store, vinylService = inject(VinylService)) => ({
     addVinyl: (vinyl: Vinyl): void => {
       patchState(store, (state) => ({ vinyls: [...state.vinyls, vinyl] }));
@@ -48,6 +50,7 @@ export const VinylsStore = signalStore(
       )
     ),
   })),
+  // Hooks
   withHooks({
     onInit(store) {
       store.downloadCollection();
