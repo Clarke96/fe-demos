@@ -1,4 +1,4 @@
-import { Artist } from '../models';
+import { Artist } from './models';
 
 export const ARTISTS: Artist[] = [
   {
@@ -13,7 +13,8 @@ export const ARTISTS: Artist[] = [
         year: 1963,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/c/c1/PleasePleaseMe_albumcover.jpg',
         artist: { id: '1', name: 'The Beatles' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 5,
+        rare: true,
       },
       {
         id: '2',
@@ -21,7 +22,8 @@ export const ARTISTS: Artist[] = [
         year: 1963,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/42/Withthebeatlescover.jpg',
         artist: { id: '1', name: 'The Beatles' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 4,
+        rare: false,
       },
       {
         id: '3',
@@ -29,7 +31,8 @@ export const ARTISTS: Artist[] = [
         year: 1964,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/e/e6/HardDayUK.jpg',
         artist: { id: '1', name: 'The Beatles' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 10,
+        rare: false,
       },
       {
         id: '4',
@@ -37,7 +40,8 @@ export const ARTISTS: Artist[] = [
         year: 1964,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/0/0a/Beatlesforsalecover.jpg',
         artist: { id: '1', name: 'The Beatles' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 23,
+        rare: false,
       },
       {
         id: '5',
@@ -46,7 +50,8 @@ export const ARTISTS: Artist[] = [
         imageUrl:
           'https://upload.wikimedia.org/wikipedia/en/5/50/Help%21_%28The_Beatles_album_-_cover_art%29.jpg',
         artist: { id: '1', name: 'The Beatles' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 3,
+        rare: false,
       },
       {
         id: '6',
@@ -54,7 +59,8 @@ export const ARTISTS: Artist[] = [
         year: 1965,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/5/50/Rubbersoulcover.jpg',
         artist: { id: '1', name: 'The Beatles' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 3,
+        rare: false,
       },
       {
         id: '7',
@@ -62,7 +68,8 @@ export const ARTISTS: Artist[] = [
         year: 1966,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/1/16/Revolver.jpg',
         artist: { id: '1', name: 'The Beatles' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 9,
+        rare: true,
       },
     ],
   },
@@ -78,7 +85,8 @@ export const ARTISTS: Artist[] = [
         year: 1964,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/9/9b/RollingStonesalbum.jpg',
         artist: { id: '2', name: 'The Rolling Stones' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 5,
+        rare: true,
       },
       {
         id: '9',
@@ -86,7 +94,8 @@ export const ARTISTS: Artist[] = [
         year: 1965,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/4e/RollingStonesNo2albumcover.jpg',
         artist: { id: '2', name: 'The Rolling Stones' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 2,
+        rare: false,
       },
       {
         id: '10',
@@ -94,7 +103,8 @@ export const ARTISTS: Artist[] = [
         year: 1965,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/8/8b/OutofOurHeadsalbumcover.jpg',
         artist: { id: '2', name: 'The Rolling Stones' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 20,
+        rare: false,
       },
       {
         id: '11',
@@ -102,7 +112,8 @@ export const ARTISTS: Artist[] = [
         year: 1966,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Aftermath-RollingStones.jpg',
         artist: { id: '2', name: 'The Rolling Stones' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 5,
+        rare: false,
       },
       {
         id: '12',
@@ -110,7 +121,8 @@ export const ARTISTS: Artist[] = [
         year: 1967,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/7/7e/BetweentheButtonsalbumcover.jpg',
         artist: { id: '2', name: 'The Rolling Stones' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 4,
+        rare: false,
       },
     ],
   },
@@ -126,7 +138,8 @@ export const ARTISTS: Artist[] = [
         year: 1962,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/9/9e/SurfinSafari.jpg',
         artist: { id: '3', name: 'The Beachboys' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 3,
+        rare: false,
       },
       {
         id: '14',
@@ -134,7 +147,8 @@ export const ARTISTS: Artist[] = [
         year: 1963,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/5/5e/SurfinUsa.jpg',
         artist: { id: '3', name: 'The Beachboys' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 21,
+        rare: false,
       },
       {
         id: '15',
@@ -142,7 +156,8 @@ export const ARTISTS: Artist[] = [
         year: 1966,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/47/PetSoundsCover.jpg',
         artist: { id: '3', name: 'The Beachboys' },
-        stock: { cd: 10, vinyl: 5, cassette: 0 },
+        stock: 1,
+        rare: true,
       },
     ],
   },

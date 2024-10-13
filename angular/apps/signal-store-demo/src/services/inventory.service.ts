@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Artist, ARTISTS } from '@database';
+import { ARTISTS } from '@database';
 import { delay, map, Observable, of } from 'rxjs';
-import { Artists } from '../models';
+import { Album, Artists } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class InventoryService {
@@ -18,10 +18,14 @@ export class InventoryService {
     );
   }
 
-  public getAlbums(artistId: string): Observable<Artist | null> {
+  public getAlbums(): Observable<Album[] | null> {
     return of(ARTISTS).pipe(
       delay(1000),
-      map((artists) => artists.find(({ id }) => id === artistId) ?? null)
+      map((artists) => {
+        return artists.reduce((acc, artist) => {
+          return [...acc, ...artist.albums.map((album) => album)];
+        }, [] as Album[]);
+      })
     );
   }
 }

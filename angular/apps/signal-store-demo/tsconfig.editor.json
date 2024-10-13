@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "../../database/ARTISTS.ts",
+    "../../database/index.ts",
+    "../../database/models/album.ts",
+    "../../database/models/artist.ts"
+  ],
+  "compilerOptions": {},
+  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
+}

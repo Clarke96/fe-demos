@@ -4,9 +4,6 @@ export interface Album {
   year: number;
   imageUrl: string;
   artist: { name: string; id: string };
-  stock: {
-    cd: number;
-    vinyl: number;
-    cassette: number;
-  };
+  stock: number;
+  rare: boolean;
 }

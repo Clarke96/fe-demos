@@ -1,11 +1,11 @@
 import { computed, inject } from '@angular/core';
+import { Album, Artist } from '@database';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { pipe, switchMap, tap } from 'rxjs';
 import { UserSelectors } from '../../global-store';
 import { UserActions } from '../../global-store/user/user.actions';
-import { Album, Artist } from '../../models';
 import { withLoadState } from '../../signal-store-features';
 import { InventoryService } from './../../services/inventory.service';
 
