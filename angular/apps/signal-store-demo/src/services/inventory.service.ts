@@ -18,7 +18,7 @@ export class InventoryService {
     );
   }
 
-  public getAlbums(): Observable<Album[] | null> {
+  public getAlbums(): Observable<Album[]> {
     return of(ARTISTS).pipe(
       delay(1000),
       map((artists) => {

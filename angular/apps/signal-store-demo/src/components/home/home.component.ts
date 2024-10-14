@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
-import { ArtistCardComponent } from './artist-card.component';
+import { AlbumCardComponent } from './album-card.component';
 import { HomeStore } from './home.store';
 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [ArtistCardComponent, MatProgressSpinnerModule],
+  imports: [MatProgressSpinnerModule, AlbumCardComponent],
   providers: [HomeStore],
   template: `
     <img
@@ -21,8 +21,10 @@ import { HomeStore } from './home.store';
     @if(store.isLoading()){
     <mat-progress-spinner class="block mx-auto mt-8" diameter="48" mode="indeterminate" />
     } @else{
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
-      @for(artist of store.artists(); track artist.id) { }
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6 sm:mt-8">
+      @for(album of store.albums(); track album.id) {
+      <app-album-card [album]="album" class="flex justify-center" />
+      }
     </div>
     }
   `,
