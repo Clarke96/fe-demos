@@ -10,7 +10,7 @@ export const CartStore = signalStore(
     totalCost: globalStore.selectSignal(UserSelectors.selectTotalCost),
   })),
   withMethods((_, globalStore = inject(Store)) => ({
-    remove: (item: Item) => globalStore.dispatch(UserActions.removeFromCart({ item })),
-    clear: () => globalStore.dispatch(UserActions.clearCart()),
+    remove: (item: Item) => globalStore.dispatch(UserActions.removeFromBasket({ item })),
+    clear: () => globalStore.dispatch(UserActions.clearBasket()),
   }))
 );

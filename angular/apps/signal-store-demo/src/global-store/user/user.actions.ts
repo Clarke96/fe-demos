@@ -4,9 +4,9 @@ import { Item } from '../../models/item';
 export const UserActions = createActionGroup({
   source: 'User',
   events: {
-    AddToCart: props<{ item: Item }>(),
-    RemoveFromCart: props<{ item: Item }>(),
-    ClearCart: emptyProps(),
+    AddToBasket: props<{ item: Item }>(),
+    RemoveFromBasket: props<{ item: Item }>(),
+    ClearBasket: emptyProps(),
     SetCredit: props<{ credit: number }>(),
   },
 });

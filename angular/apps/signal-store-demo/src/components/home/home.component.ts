@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, untracked } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { AlbumCardComponent } from './album-card.component';
@@ -23,7 +23,11 @@ import { HomeStore } from './home.store';
     } @else{
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6 sm:mt-8">
       @for(album of store.albums(); track album.id) {
-      <app-album-card [album]="album" class="flex justify-center" />
+      <app-album-card
+        [album]="album"
+        class="flex justify-center"
+        (addToBasket)="store.addToBasket(album)"
+      />
       }
     </div>
     }
@@ -36,4 +40,12 @@ export class HomeComponent {
   artistClicked(id: string) {
     this.router.navigate(['artist'], { queryParams: { id } });
   }
+
+  showWarning = effect(() => {
+    const basketPriceGreaterThanCredit = this.store.basketPriceGreaterThanCredit();
+
+    untracked(() => {
+      if (basketPriceGreaterThanCredit) alert('Warning! Basket price is greater than store credit');
+    });
+  });
 }

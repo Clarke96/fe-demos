@@ -8,9 +8,13 @@ const select = <T>(selector: (state: UserState) => T) => createSelector(selectUs
 
 const selectBasket = select((state) => state.basket);
 
-const selectTotalCost = select((state) => state.basket.reduce((acc, item) => acc + item.price, 0));
+const selectTotalCost = select((state) =>
+  state.basket.reduce((acc, item) => acc + item.price * item.quantity, 0)
+);
 
-const selectNumberOfItems = select((state) => state.basket.length);
+const selectNumberOfItems = select((state) =>
+  state.basket.reduce((acc, item) => acc + item.quantity, 0)
+);
 
 const selectCredit = select((state) => state.credit);
 
