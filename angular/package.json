@@ -21,6 +21,7 @@
     "@ngrx/signals": "18.0.2",
     "@ngrx/store": "^18.0.1",
     "@nx/angular": "19.6.5",
+    "exceljs": "^4.4.0",
     "latest": "^0.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
