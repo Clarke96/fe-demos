@@ -9,6 +9,7 @@ import { ExportXlsxService } from './../../services/export-xlsx.service';
   standalone: true,
   selector: 'app-data',
   imports: [MatTableModule, MatButtonModule, MatIconModule],
+
   template: `
     <div class="block w-full h-full p-8">
       <button
@@ -42,6 +43,6 @@ export class DataComponent {
   readonly columns = ['title', 'rare', 'artist', 'year'];
 
   protected exportToXlsx() {
-    this.exportXlsxService.download();
+    this.exportXlsxService.download(this.store.dataSource());
   }
 }
