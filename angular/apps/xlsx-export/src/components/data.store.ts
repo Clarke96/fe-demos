@@ -8,6 +8,7 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
+import { DataRow } from '../models';
 
 interface DataState {
   _albums: Album[];
@@ -21,10 +22,12 @@ export const DataStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
   withComputed((store) => ({
-    dataSource: computed(() =>
+    dataSource: computed<DataRow[]>(() =>
       store._albums().map((album) => ({
         ...album,
         artist: album.artist.name,
+        website: `www.${album.artist.name.replace(/[' ']/g, '')}.com`,
+        cost: Math.floor(Math.random() * 100),
       }))
     ),
   })),

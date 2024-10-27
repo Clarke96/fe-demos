@@ -23,8 +23,10 @@ import { ExportXlsxService } from './../../services/export-xlsx.service';
       </button>
       <table mat-table [dataSource]="store.dataSource()" class="!bg-white">
         @for(column of columns; track column){
-        <ng-container matColumnDef="{{ column }}">
-          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <ng-container [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ column }}{{ column === 'cost' ? ' ($)' : '' }}
+          </th>
           <td mat-cell *matCellDef="let album">{{ album[column] }}</td>
         </ng-container>
         }
@@ -40,7 +42,7 @@ export class DataComponent {
   protected store = inject(DataStore);
   protected exportXlsxService = inject(ExportXlsxService);
 
-  readonly columns = ['title', 'rare', 'artist', 'year'];
+  readonly columns = ['title', 'rare', 'artist', 'year', 'website', 'cost'];
 
   protected exportToXlsx() {
     this.exportXlsxService.download(this.store.dataSource());
