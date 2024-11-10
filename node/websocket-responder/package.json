@@ -1,0 +1,21 @@
+{
+  "name": "websocket-responder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/responder-server.js",
+    "dev": "nodemon src/responder-server.ts"
+  },
+  "author": "Sean Clarke",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/ws": "^8.5.13",
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "ws": "^8.18.0"
+  }
+}

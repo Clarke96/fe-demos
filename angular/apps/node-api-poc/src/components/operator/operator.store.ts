@@ -4,7 +4,7 @@ import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
-import { UserApiService } from '../../shared';
+import { UserApiService, withWebsocket } from '../../shared';
 
 interface OperatorState {
   standardOut: string;
@@ -18,10 +18,15 @@ const initialState: OperatorState = {
 
 export const OperatorStore = signalStore(
   withState(initialState),
+  withWebsocket(8080),
   withComputed((localStore) => ({
     isPending: computed(() => localStore.callState() === 'pending'),
+    stringifiedWebsocketMessage: computed(() => JSON.stringify(localStore.message(), null, 2)),
   })),
   withMethods((localStore, userService = inject(UserApiService)) => ({
+    sendWebsocketMessage: () => {
+      localStore.send('Hello from Angular!');
+    },
     getUsers: rxMethod<void>(
       pipe(
         tap(() => patchState(localStore, { callState: 'pending' })),

@@ -1,1 +1,2 @@
-export * from './user-api.service';
+export * from './restful-api.service';
+export * from './websocket-api.service';
