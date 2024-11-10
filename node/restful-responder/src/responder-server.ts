@@ -1,14 +1,27 @@
 import { ApiResponse, User } from "@models";
 import bodyParser from "body-parser";
+import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 
 const app = express();
 const port = 3000;
 
+// Basic CORS setup
+// THE ACRONYM CORS STANDS FOR CROSS-ORIGIN RESOURCE SHARING
+const corsOptions = {
+  origin: "http://localhost:4200", // Your Angular app URL
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  maxAge: 86400, // How long the results of a preflight request can be cached (in seconds)
+};
+
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 // Middleware to parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
+// Middleware to enable CORS
+app.use(cors(corsOptions));
 
 // Custom error class
 class ApiError extends Error {
@@ -36,6 +49,21 @@ app.get("/users/:id", (req: Request<{ id: string }>, res: Response) => {
       userId,
       query: req.query,
     },
+  };
+  res.json(response);
+});
+
+// Get all users
+app.get("/users", (req: Request, res: Response) => {
+  const users: User[] = [
+    { id: "1", name: "John Doe", email: "[email protected]" },
+    { id: "2", name: "Jane Doe", email: "[email protected]" },
+  ];
+
+  const response: ApiResponse<User[]> = {
+    success: true,
+    message: "Users fetched successfully",
+    data: users,
   };
   res.json(response);
 });
@@ -99,6 +127,9 @@ const errorHandler = (err: Error | ApiError, req: Request, res: Response, next: 
 };
 
 app.use(errorHandler);
+
+// Error handling for CORS preflight
+app.options("*", cors(corsOptions));
 
 // Start the server
 app.listen(port, () => {
